@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WildBook - Интернет-магазин книг">
+    <meta name="keywords" content="WildBook, Интернет-магазин книг, Книжный магазин, Книги, Купить книгу, Заказать книгу, Online book-store, Buy books, Order books">
+    <title>WildBook & Интернет-магазин книг</title>
+    <link rel="icon" href="./img/WildBook.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./CSS/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="./CSS/catalog.min.css">
+</head>
+
+<body>
+    <div class="buttonUp">
+        <i class="fas fa-chevron-up buttonUp__icon"></i>
+    </div>
+    <div class="fixed"></div>
+    <header class="header">
+        <div class="container">
+            <div class="header__main">
+                <div class="header__logotype">
+                    <a href="./WildBooл-Main.html" class="header__link">
+                        <h1>Wild<span class="header__span">Book</span></h1>
+                        <p class="header__title">Ваша любимая библиотека!</p>
+                    </a>
+                </div>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <div class="menu__extra">
+                            <li class="menu__item"><a href="./WildBook-Main.html" class="menu__link">Главная <label class="menu__label"></label></a></li>
+                            <li class="menu__item"><a href="./WildBook-Catalog.html" class="menu__link">Каталог <label class="menu__label"></label></a></li>
+                            <li class="menu__item"><a href="./WildBook-Support.html" class="menu__link">Поддержка <label class="menu__label"></label></a></li>
+                        </div>
+                        <li class="menu__item menu__item_profileBlock">
+                            <a data-fancybox="modalAccount" data-src="#modalAccount" href="javascript:;" class="menu__link menu__link_style">Личный кабинет</a>
+                            <a href="" id="cartButton">
+                                <i class="fas fa-shopping-basket menu__icon menu__icon_style" id="cart">
+                                    <span class="menu__span" id="cartCount">0</span>
+                                </i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="section1">
+        <div class="container">
+            <div class="section1__img section1__img_style">
+                <img src="./img/Catalog-images/section1/girl and book.jpg" alt="Book and glasses" class="section1__image">
+            </div>
+            <h2 class="section1__h2">Wild<span class="section1__span">Book</span></h2>
+            <div class="section1__img section1__img_style_second">
+                <img src="./img/Catalog-images/section1/hand and tea.jpg" alt="Girl and glasses" class="section1__image">
+            </div>
+            <div class="section1__img section1__img_style_third">
+                <img src="./img/Catalog-images/section1/book.jpg" alt="Girl and book" class="section1__image section1__image_style">
+            </div>
+            <div class="section1__img section1__img_style_fourth">
+                <img src="./img/Catalog-images/section1/girl and book2.jpg" alt="Cat and book" class="section1__image">
+            </div>
+        </div>
+    </div>
+    <div class="section2" id="catalog">
+        <div class="container">
+            <div class="section2__filter">
+                <div class="section2__filterItem">
+                    <h3 class="section2__title">Сортировать по цене</h3>
+                    <div class="section2__price">
+                        <input type="range" id="range" class="section2__range" step="50" max="1000" value="500" min="50">
+                    </div>
+                    <div class="section2__text">
+                       <p class="section2__p">Стоимость: </p>
+                       <span class="section2__span">50₴ - <span id="activeRange"></span></span>
+                    </div>
+                    <div class="section2__btn">
+                        <button class="section2__apply" id="filter">Применить</button>
+                    </div>
+                </div>
+                <div class="section2__filterItem">
+                    <h3 class="section2__title">Сортировать за типами</h3>
+                    <div class="section2__select">
+                        <select class="section2__list">
+                            <option value="default">По умолчанию</option>
+                            <option value="new">Новинки</option>
+                            <option value="priceMin">От дешевых к дорогим</option>
+                            <option value="priceMax">От дорогих к дешевым</option>
+                            <option value="rating">Наибольший рейтинг</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="section2__filterItem">
+                    <h3 class="section2__title">Поиск книг за типами</h3>
+                    <div class="section2__types">
+                        <div class="section2__extra">
+                            <span class="section2__type">По названию</span>
+                            <input type="radio" name="search" checked id="radioName">
+                        </div>
+                        <div class="section2__extra">
+                            <span class="section2__type">По автору</span>
+                            <input type="radio" name="search" id="radioAuthor">
+                        </div>
+                        <div class="section2__extra">
+                            <span class="section2__type">По жанру</span>
+                            <input type="radio" name="search" id="radioGenre">
+                        </div>
+                    </div>
+                    <div class="section2__search">
+                        <input type="text" placeholder="Поиск" class="section2__searchBook" maxlength="100">
+                        <button class="section2__button">Найти</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section2__main">
+                <p class="section2__suggest">Переместите в сторону, что бы увидеть весь список книг.</p>
+                <aside class="section2__aside"></aside>
+                <div class="section2__booksInfo"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__logotype">
+                    <a href="" class="footer__link">
+                        <h1>Wild<span class="footer__span">Book</span></h1>
+                        <p class="footer__title">Ваша любимая библиотека!</p>
+                    </a>
+                </div>
+                <div class="footer__text">
+                    <p class="footer__p footer__p_style">Адрес: <span class="footer__adress">Украина, Днепр, <br>Новоорловская 22-а</span></p>
+                    <div class="footer__info">
+                        <p class="footer__p">Телефон: <a href="tel:+380958646505" class="footer__adress_style">(380) 95-864-65-05</a></p>
+                        <p class="footer__p">E-mail: <a href="mailto:WildBook@gmail.com" class="footer__adress_style">WildBook@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer__links">
+                    <div class="footer__link">
+                        <a href="https://www.instagram.com/keugenyy/" class="footer__ref"><i class="fab fa-instagram footer__icon"></i></a>
+                    </div>
+                    <div class="footer__link">
+                        <a href="viber://chat?number=+380958646505" class="footer__ref"><i class="fab fa-viber footer__icon"></i></a>
+                    </div>
+                    <div class="footer__link">
+                        <a href="tg://resolve?domain=Eugennyy" class="footer__ref"><i class="fab fa-telegram-plane footer__icon"></i></a>
+                    </div>
+                </div>
+                <p class="footer__rights">WildBook © 2020 - 2021. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+    <form class="modalEntrance modal" id="modalAccount">
+        <h2 class="modalEntrance__title">Вход</h2>  
+        <div class="modalEntrance__inputs">
+            <input type="text" class="modalEntrance__input" placeholder="Введите логин" maxlength="50" required id="accountLogin">
+        </div>  
+        <div class="modalEntrance__inputs">
+            <input type="password" class="modalEntrance__input" placeholder="Введите пароль" maxlength="30" required id="accountPassword">
+        </div>
+        <div class="modalEntrance__btn">
+            <button class="modalEntrance__button" type="submit">Войти</button>
+        </div>
+        <div class="modalEntrance__text">
+            <p class="modalEntrance__question">У вас нет профиля?</p>
+            <a href="javascript:;" data-fancybox="modalRegistration" data-src="#modalReg" class="modalEntrance__registration">Регистрация</a>
+        </div>
+    </form>
+    <div class="modalProfile modal" id="modalProfile">
+        <h2 class="modalProfile__h2">Мой профиль</h2>
+        <div class="modalProfile__pic">
+            <img src="" alt="Ваше фото профиля" class="modalProfile__photo">
+            <div class="modalProfile__inputs">
+                <input type="file" onchange="chooseFileProfile(event)" accept="image/*" class="modalProfile__setPhoto">
+            </div>
+        </div>
+        <div class="modalProfile__text">
+            <div class="modalProfile__inputs modalProfile__inputs_style">
+                <span class="modalProfile__span">Почта:</span>
+                <input class="modalProfile__input" type="email" id="profileEmail">
+            </div>
+            <div class="modalProfile__inputs">
+                <span class="modalProfile__span">Логин:</span>
+                <input class="modalProfile__input" type="text" id="profileLogin">
+            </div>
+            <div class="modalProfile__inputs">
+                <span class="modalProfile__span">Пароль:</span>
+                <input class="modalProfile__input" type="password" id="profilePassword">
+            </div>
+        </div>
+        <div class="modalProfile__btn">
+            <button class="modalProfile__edit">редактировать</button>
+            <button class="modalProfile__exit">выйти</button>
+        </div>
+    </div>
+    <form class="modalReg modal" id="modalReg">
+        <h2 class="modalReg__title">Регистрация</h2>  
+        <div class="modalReg__inputs">
+            <input type="email" class="modalReg__input" placeholder="Введите email" required id="regEmail">
+        </div>
+        <div class="modalReg__inputs">
+            <input type="text" class="modalReg__input" placeholder="Придумайте логин" required id="regLogin">
+        </div>
+        <div class="modalReg__inputs">
+            <input type="password" class="modalReg__input" placeholder="Придумайте пароль" required id="regPassword">
+        </div>
+        <p class="modalReg__p">Выберите фото профиля:</p>
+        <div class="modalReg__inputs modalReg__inputs_style">
+            <img src="./img/ProfilesPhotos/no-photo.jpg" alt="Укажите фото" class="modalReg__photo">
+            <input type="file" onchange="chooseFileReg(event)" accept="image/*" class="modalReg__setPhoto">
+        </div>
+        <div class="modalReg__btn">
+            <a class="modalReg__button" href="javascript:;" data-fancybox="modalSuccessfulReg" data-src="#modalSuccessfulReg" >Зарегистрироваться</a>
+        </div>
+    </form>
+    <div class="modalSuccessReg modal" id="modalSuccessfulReg">
+        <h2 class="modalSuccessReg__h2">Регистрация вашего профиля прошла успешно.</h2>
+        <div class="modalSuccessReg__btn">
+            <button class="modalSuccessReg__button">Вернуться на главную</button>
+        </div>
+    </div> 
+    <form class="modalCart" id="modalCart" action="./PHP/catalogBuy.php">
+        <h2 class="modalCart__h2">Корзина</h2>
+        <div class="modalCart__items">
+            <p class="modalCart__finalPrices">Итоговая цена: <span class="modalCart__finalPrice" id="finalPrice"></span></p>
+            <div class="modalCart__buyBlock">
+                <input type="email" class="modalCart__email" name="email" required placeholder="Ваш email">
+                <button type="submit" class="modalCart__buy">Оплатить</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="./JS/profiles.js"></script>
+    <script src="./JS/cart.js"></script>
+    <script src="./JS/books.js"></script>
+    <script src="./JS/catalog.min.js"></script>
+</body>
+
+</html>
