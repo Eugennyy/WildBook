@@ -1,0 +1,1202 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+ul, ol
+    list-style-type: none
+
+a
+    text-decoration: none
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button 
+    -webkit-appearance: none
+    margin: 0
+
+input[type="number"] 
+    -moz-appearance: textfield
+
+input[type="number"]:hover, input[type="number"]:focus 
+    -moz-appearance: number-input
+
+#cartButton
+    outline: none
+
+$playfairFont: 'Playfair Display', serif
+
+$ptsansFont: 'PT Sans', sans-serif
+
+$opensansFont: 'Open Sans', sans-serif
+
+$blackColor: #121212
+
+$crimsonColor: #DE3242
+
+$sandColor: #F5BF56
+
+%flexOptions
+    display: flex
+    justify-content: center
+    align-items: center
+
+%sectionBg
+    width: 100%
+    position: absolute
+    overflow: hidden
+
+%headerTitle
+    text-transform: uppercase
+    font-family: $ptsansFont
+    font-size: 11px
+    letter-spacing: 1px
+    color: white
+    padding-left: 5px
+
+%buttonOptions
+    outline: none
+    border: 1px solid $crimsonColor
+    background-color: $crimsonColor
+    color: white
+    cursor: pointer
+    font-size: 16.5px
+    border-radius: 3px
+    transition: background-color .2s linear
+
+%modalOptions
+    display: none
+    max-width: 500px
+    width: 100%
+    border-radius: 5px
+    color: $blackColor
+    font-family: $ptsansFont
+
+%buttonOptions2
+    outline: none 
+    background-color: $blackColor
+    border: 2px solid $blackColor
+    text-transform: uppercase
+    padding: 12px 30px 12px 30px
+    color: white
+    font-size: 16px
+    cursor: pointer
+    transition-property: background-color, color
+    transition: .1s linear
+
+%photoOptions
+    max-width: 85px
+    max-height: 85px
+    width: 100%
+    height: 100%
+    border-radius: 50%
+
+.container
+    max-width: 1080px
+    width: 100%
+    margin: 0 auto
+
+body
+    position: relative
+
+h1
+    font-size: 30px
+    font-family: $playfairFont
+
+input[type="radio"]
+    cursor: pointer
+
+.buttonUp
+    @extend %flexOptions
+    width: 60px
+    height: 60px
+    background-color: $crimsonColor
+    border: 2px solid white
+    z-index: 9999
+    position: fixed
+    right: 38px
+    bottom: 38px
+    outline: none
+    cursor: pointer
+    transition: box-shadow .2s linear
+
+    &:hover
+        box-shadow: inset 0px -60px 0px darken($crimsonColor, 7%)
+    &__icon
+        font-size: 16px
+        color: white
+
+.fixed
+    width: 100%
+    height: 45px
+    background-color: #262626
+    position: fixed
+    z-index: 999999
+
+.header
+    width: 100%
+    background-color: $crimsonColor
+    z-index: 999
+    padding-top: 60px
+
+    &__main
+        display: flex
+        justify-content: space-between
+        align-items: center
+        width: 100%
+    &__img
+        padding-left: 45px
+    &__span
+        color: white
+        font-weight: normal
+        font-style: italic
+
+        &_style
+            color: #D52A3A
+            font-weight: 600
+
+    &__link
+        color: $blackColor
+    &__title
+        @extend %headerTitle
+
+.menu
+    &__list
+        display: flex
+        align-items: center
+        width: 100%
+    &__extra
+        display: flex
+    &__item
+        padding-right: 30px
+    &__link
+        font-family: $opensansFont
+        color: white
+        text-transform: uppercase
+        font-size: 13px
+        position: relative
+
+        &:hover .menu__label:before
+            left: 0
+
+        &_style
+            font-family: $ptsansFont
+            font-weight: 600
+            background-color: $blackColor
+            border: 2px solid $blackColor
+            padding: 1em 3em
+            font-size: 14px
+            color: white
+            text-transform: uppercase
+            transition: .1s linear
+            transition-property: background-color, color
+            outline: none
+
+            &:hover
+                background-color: transparent
+                color: $blackColor
+    
+    &__label
+        width: 100%
+        height: 100%
+        left: 0
+        bottom: 0
+        top: 0
+        overflow: hidden
+        position: absolute
+        cursor: pointer
+
+        &:before
+            content: ''
+            width: 100%
+            height: 100%
+            position: absolute
+            left: -100%
+            bottom: 0
+            border-bottom: 1px solid white
+            transition: .2s linear
+
+    &__icon
+        font-size: 23px
+        padding-left: 15px
+        color: $blackColor
+        position: relative
+
+        &_style
+            opacity: .5
+
+    &__span
+        position: absolute
+        top: -15px
+        width: 18.5px
+        height: 15px
+        font-family: $ptsansFont
+        font-size: 14px
+        text-align: center
+        color: $blackColor
+        background-color: white
+        position: absolute
+
+.section1
+    background-color: $crimsonColor
+    padding: 30px 0 225px 0
+    position: relative
+
+    &:after
+        content: url(../img/Main-images/section3/section3-bg.png)
+        bottom: -38px
+        @extend %sectionBg
+    &__h2
+        font-family: $playfairFont
+        font-weight: 600
+        line-height: 1
+        color: #D52A3A
+        text-align: center
+        font-size: 197.5px
+        user-select: none
+        padding-top: 120px
+    &__span
+        font-style: italic
+    &__img
+        filter: drop-shadow(0px 10px 0px rgba(0, 0, 0, 0.1));
+        position: absolute
+
+        &_style
+            width: 18.3%
+    
+            &_second
+                width: 22%
+                left: 0
+                top: 220px
+            &_third
+                width: 24.3%
+                right: 15.5%
+                top: 145px
+            &_fourth
+                width: 23.7%
+                right: 0
+                z-index: 20
+                top: 275px
+
+    &__image
+        width: 100%
+    &__pic
+        width: 65%
+        padding-top: 50px
+        margin: 0 auto
+    &__picture
+        width: 100%
+
+.section2
+    padding: 50px 0 33.4px 0 
+    position: relative
+    
+    &__filter
+        display: flex
+        justify-content: space-around
+        font-family: $ptsansFont
+        padding: 15px 0 15px 0px
+        border-bottom: 1px solid $blackColor
+    &__title
+        background-color: $crimsonColor
+        padding: 15px 20px 15px 20px
+        color: white
+        text-align: center
+    &__price
+        padding: 20px 0 10px 0
+    &__range
+        outline: none
+        width: 100%
+        cursor: ew-resize
+    &__text, &__types
+        display: flex
+    &__p
+        color: $crimsonColor
+        font-size: 16.5px
+    &__span
+        padding: 1px 0 0 5px
+    &__btn
+        padding-top: 10.5px
+        display: flex
+        justify-content: flex-end
+    &__apply
+        @extend %buttonOptions
+        padding: 10px 15px 10px 15px
+
+        &:hover
+            background-color: darken($crimsonColor, 5%)
+
+    &__select
+        padding-top: 15px
+    &__list
+        background-color: transparent
+        color: $blackColor
+        outline: none
+        border: 1px solid $blackColor
+        padding: 15px 65px 15px 5px
+        cursor: pointer
+        font-size: 15px
+        transition: border .2s linear
+
+        &:focus
+            border: 1px solid $crimsonColor
+
+    &__types
+        align-items: center
+        padding-top: 20px
+    &__extra
+        padding-right: 10px
+
+        &:last-child
+            padding-right: 0
+
+    &__type
+        font-size: 16.5px
+        padding: 0 5px 0 10px
+
+        &:first-of-type
+            padding-left: 0
+
+    &__search
+        display: flex
+        justify-content: space-between
+        padding-top: 15px
+    &__searchBook
+        outline: none
+        border: 1px solid $blackColor
+        padding: 15px 10px 15px 10px
+        font-size: 14.5px
+        background-color: transparent
+
+        &::placeholder
+            color: $blackColor
+
+    &__button
+        @extend %buttonOptions
+        padding: 5px 20px 5px 20px
+
+        &:hover
+            background-color: darken($crimsonColor, 5%)
+
+    &__main
+        display: flex
+        padding: 30px 0 30px 0
+        position: relative
+    &__suggest
+        position: absolute
+        top: 15px
+        text-align: center
+        font-family: $ptsansFont
+        font-size: 17px
+        color: $blackColor
+        display: none
+    &__aside
+        max-width: 28%
+        max-height: 75vh
+        width: 100%
+        height: 100%
+        overflow-y: scroll
+        padding-left: 50px
+        font-family: $ptsansFont
+    &__asideItem
+        padding: 10px 10px 10px 0
+        display: flex
+        flex-direction: column
+        align-items: center
+        cursor: pointer
+
+        &:first-of-type
+            padding-top: 0            
+        &:hover .section2__bookImage
+            transform: rotate(2deg)
+
+    &__edit
+        display: block
+        position: absolute
+        top: 0
+        right: 0
+        font-size: 25px
+        color: $crimsonColor
+        cursor: pointer
+        transition: color .1s linear
+
+        &_style
+            display: none
+        &:hover
+            color: $sandColor
+
+    &__bookImage
+        min-width: 185px
+        max-width: 185px
+        height: 260px
+        box-shadow: 0px 3px 5px 0px #121212
+        transition: transform .1s linear
+    &__name
+        text-align: center
+        width: 100%
+        padding-top: 5px
+    &__rating
+        display: flex
+        justify-content: center
+        width: 100%
+    &__star
+        color: $crimsonColor
+        font-size: 20px
+        font-weight: normal
+
+        &_style
+            color: $blackColor
+
+    &__booksInfo
+       width: 100%
+       display: flex
+       align-items: center
+    &__info
+        display: flex
+        font-family: $ptsansFont
+        padding-left: 20px
+        width: 100%
+    &__information
+        padding-left: 20px
+    &__pic
+        min-width: 325px
+        max-width: 325px    
+        height: 450px
+        position: relative
+    &__picture
+        width: 100%
+        height: 100%
+        box-shadow: 0px 3px 5px 0px $blackColor
+    &__h3
+        font-size: 18px
+        padding-top: 10px
+        color: #121212
+        font-weight: normal
+
+        &_style
+            font-size: 30px
+            padding-top: 0
+            font-weight: bold
+
+    &__inline
+        color: $crimsonColor
+        font-weight: bold
+
+        &_style
+            font-size: 18px
+            padding-right: 10px
+
+    &__author
+        font-size: 18px
+        display: block
+        padding-top: 10px
+    &__desc
+        padding-top: 15px
+    &__showDesc
+        display: block
+        max-width: 170px
+        text-align: center
+        width: 100%
+        @extend %buttonOptions
+        padding: 15px 10px 15px 10px
+        border-radius: 0
+        border: 2px solid $crimsonColor
+        transition-property: background-color, color
+        transition: .1s linear
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+
+    &__modalTitle
+        font-size: 30px
+        color: $crimsonColor
+        font-style: italic
+        text-align: center
+    &__modalDesc
+        padding-top: 10px
+    &__modalText
+        padding-top: 10px
+    &__modalArea
+        padding: 10px
+        width: 100%
+        color: $blackColor
+        outline: none
+        border: 1px solid $blackColor
+        font-size: 15.5px
+        resize: none
+    &__control
+        display: flex
+        align-items: center
+        font-size: 18px
+        padding-top: 15px
+       
+        &_style
+            opacity: .5
+
+    &__amount
+        padding-right: 5px
+        color: $crimsonColor
+    &__btnMinus, &__btnPlus
+        outline: none
+        border: none
+        padding: 5px
+        cursor: pointer
+        font-size: 17px
+        background-color: transparent
+    &__inputBlock
+        max-width: 20px
+        width: 100%
+    &__count
+        width: 100%
+        border: none
+        text-align: center
+        color: $blackColor
+        font-size: 16.5px
+        outline: none
+    &__btnBuy
+        padding-top: 15px
+        position: relative
+    &__hint
+        display: none
+        width: max-content
+        font-family: $ptsansFont
+        background-color: $crimsonColor
+        color: $blackColor
+        font-size: 16.5px
+        padding: 10px
+        text-align: center
+        position: absolute
+        bottom: -65px
+        border-radius: 5px
+
+        &:before
+            content: ""
+            width: 0
+            height: 0
+            border-left: 10px solid transparent
+            border-right: 10px solid transparent
+            border-bottom: 20px solid $crimsonColor
+            position: absolute
+            top: -20px 
+            left: 55px
+
+    &__buttonBuy
+        background-color: #121212
+        outline: none
+        border: 2px solid #121212
+        color: white
+        cursor: pointer
+        font-size: 16px
+        text-transform: uppercase
+        padding: 11.5px 18.5px 11.5px 18.5px
+        transition: .1s linear
+        transition-property: color, background-color
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+        &_style
+            opacity: .5
+            transition: none
+
+            &:hover
+                background-color: $blackColor
+                color: white
+                cursor: not-allowed
+            &:hover + .section2__hint
+                display: block
+
+    &__inputs
+        display: flex
+        align-items: center
+        padding-top: 15px
+    &__input
+        padding: 5px 10px 5px 10px
+        font-size: 18px
+        outline: none
+        border: 1px solid $blackColor
+        transition: border .2s linear
+
+        &_style
+            font-size: 25px
+            font-weight: bold
+        &:focus
+            border: 1px solid $crimsonColor
+
+    &__file
+        display: block
+        padding-top: 10px
+        font-size: 14.5px
+        margin: 0 auto
+        color: $blackColor
+        outline: none
+    &__buttons
+        display: flex
+        padding-top: 15px
+    &__editButton
+        outline: none
+        color: $blackColor
+        cursor: pointer
+        font-size: 16px
+        text-transform: uppercase
+        padding: 11.5px 15px 11.5px 15px
+        transition: background-color .1s linear
+
+        &:hover
+            background-color: transparent
+
+    &__editSave
+        background-color: lime
+        border: 2px solid lime
+    &__editCancel
+        background-color: lighten(red, 6%)
+        border: 2px solid lighten(red, 6%)
+    &__editBlock
+        padding-left: 10px
+    &__chooseSpan
+        padding: 0 5px 0 10px
+        color: $blackColor
+        font-size: 15.5px
+ 
+        &_style
+            padding: 0 5px 0 0
+
+    &__blockAdd
+        display: none
+        padding-left: 20px
+    &__add
+        font-size: 20px
+        cursor: pointer
+        transition: color .1s linear
+
+        &:hover
+            color: $crimsonColor
+
+.footer
+    background-color: $crimsonColor
+
+    &__main
+        display: flex
+        align-items: center
+        flex-direction: column
+        position: relative
+        padding: 30px 0 10px 0
+    &__span
+        color: white
+        font-weight: normal
+        font-style: italic
+    &__link
+        color: $blackColor
+    &__title
+        @extend %headerTitle
+    &__text
+        display: flex
+        padding-top: 25px
+        width: 100%
+        justify-content: center
+        font-family: $opensansFont
+    &__info
+        padding-left: 35px
+    &__p
+        font-weight: bold
+
+        &_style
+            text-align: right
+
+    &__adress
+        font-size: 15px
+        font-weight: normal
+
+        &_style
+            color: white
+            font-weight: normal
+            transition: color .2s linear
+
+            &:hover
+                color: darken(white, 10%)
+
+    &__links
+        width: 100%
+        display: flex
+        justify-content: center
+        padding-top: 25px
+    &__link
+        padding-right: 10px
+
+        &:last-child
+            padding-right: 0
+
+    &__ref
+        @extend %flexOptions
+        width: 38px
+        height: 38px
+        border-radius: 50%
+        background-color: #eeeeee
+
+        &:hover .footer__icon
+            color: $crimsonColor
+
+    &__icon
+        font-size: 21px
+        color: $blackColor
+        transition: color .2s linear
+    &__rights
+        padding-top: 20px
+        font-family: $ptsansFont
+        font-size: 14px
+        
+.modalDesc
+    display: none
+    max-width: 650px
+    width: 100%
+    border-radius: 5px
+    font-size: 15px
+    color: $blackColor
+    font-family: $ptsansFont
+    text-align: justify
+   
+.modalEntrance, .modalReg
+    @extend %modalOptions
+
+    &__title
+        font-size: 30px
+        color: $crimsonColor
+        text-align: center
+    &__inputs
+        padding-top: 15px
+
+        &_style
+            display: flex
+            align-items: center
+            justify-content: space-evenly
+
+    &__input
+        border: 1.5px solid $blackColor
+        padding: 10px 5px 10px 5px
+        outline: none
+        width: 100%
+        font-size: 16px
+        transition: border .1s linear
+
+        &:focus
+            border: 1.5px solid $crimsonColor
+
+    &__btn
+        padding-top: 20px
+        display: flex
+        justify-content: center
+    &__button
+        @extend %buttonOptions2
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+    
+    &__text
+        padding-top: 15px
+        text-align: center
+        font-size: 16.5px
+    &__registration
+        display: inline-block
+        color: $crimsonColor
+        padding-top: 2px
+        text-decoration: underline
+    &__photo
+        @extend %photoOptions
+    &__p
+        padding-top: 15px
+        font-size: 16.5px
+    &__setPhoto
+        outline: none
+
+.modalProfile
+    @extend %modalOptions
+
+    &__h2
+        text-align: center
+        color: $blackColor
+        font-size: 25px
+    &__pic
+        display: flex
+        flex-direction: column
+        align-items: center
+        padding-top: 20px
+    &__photo
+        @extend %photoOptions
+    &__setPhoto
+        outline: none
+    &__text
+        display: flex
+        flex-direction: column
+        padding: 20px 0 20px 0
+    &__inputs
+        padding-top: 15px
+
+        &_style
+            padding-top: 0
+
+    &__span
+        display: inline-block
+        font-weight: bold
+        font-size: 18.5px
+        padding-bottom: 5px
+    &__input
+        width: 100%
+        outline: none
+        border: 1px solid $blackColor
+        font-size: 15.5px
+        padding: 5px
+        transition: border .2s linear
+
+        &:focus
+            border: 1px solid $crimsonColor
+
+    &__btn
+        display: flex
+        justify-content: space-evenly
+    &__edit, &__exit
+        @extend %buttonOptions2
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+
+    &__exit
+        background-color: $crimsonColor
+        border: 2px solid $crimsonColor
+        
+.modalSuccessReg
+    @extend %modalOptions
+
+    &__h2
+        font-size: 25px
+        color: $crimsonColor
+        text-align: center
+    &__btn
+        display: flex
+        justify-content: center
+        padding-top: 20px
+    &__button
+        @extend %buttonOptions2
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+
+.modalCart
+    @extend %modalOptions
+    max-width: 650px
+    max-height: 560px
+    height: 100%
+
+    &__items
+        display: flex
+        flex-direction: column
+        position: relative
+        padding-bottom: 50px
+    &__item
+        display: flex
+        align-items: center
+        padding-top: 30px
+
+        &:first-child
+            padding-top: 20px
+
+    &__h2
+        text-align: center
+        color: $crimsonColor
+    &__image
+        width: 90px
+        height: 125px
+        box-shadow: 0px 3px 5px 0px #121212
+    &__info
+        padding-left: 19px
+        font-size: 19px
+    &__name, &__price
+        padding-bottom: 5px
+    &__count
+        display: flex
+        align-items: center
+        padding-bottom: 5px
+    &__span
+        padding-right: 10px
+    &__remove
+        padding-right: 20px
+    &__delete
+        font-size: 20px
+        cursor: pointer
+        transition: color .1s linear
+
+        &:hover
+            color: $crimsonColor
+
+    &__finalPrices
+        width: 100%
+        position: absolute
+        bottom: 0
+        text-align: center
+        font-size: 18px
+        font-weight: bold
+        padding-bottom: 5px
+    &__buyBlock
+        display: flex
+        justify-content: center
+        width: 100%
+        position: absolute
+        bottom: -70px
+        padding-bottom: 10px
+    &__email
+        border: 1px solid $blackColor
+        outline: none
+        padding: 5px 10px 5px 10px
+        font-size: 15px
+        color: $blackColor
+    &__buy  
+        padding: 15px
+        font-size: 16px
+        text-transform: uppercase
+        background-color: $blackColor
+        border: 1px solid $blackColor
+        color: white
+        cursor: pointer
+        transition-property: background-color, color
+        transition: .1s linear
+        outline: none
+
+        &:hover
+            background-color: transparent
+            color: $blackColor
+
+@media screen and (max-width: 1085px)
+    .container
+        padding: 0 15px 0 15px
+    
+@media screen and (max-width: 920px)
+    .header
+        padding: 25px 0 25px 0
+
+        &__main
+            flex-direction: column
+        &__logotype
+            padding: 50px 0 35px 0
+
+    .section1
+        &__h2
+            font-size: 150px
+
+    .section2
+        &__filter
+            flex-direction: column
+            align-items: center
+        &__filterItem
+            width: 100%
+            display: flex
+            flex-direction: column
+            align-items: center
+            padding-top: 25px
+
+            &:first-child
+                padding-top: 0
+
+        &__title
+            max-width: 375px
+            width: 100%
+        &__price
+            max-width: 248.6px
+            width: 100%
+        &__btn
+            justify-content: center
+        &__button
+            margin-left: 15px
+        &__main
+            flex-direction: column
+            align-items: center
+        &__suggest
+            display: block
+        &__aside
+            display: flex
+            overflow-y: auto
+            max-width: 95.5%
+            width: 100%
+            padding-left: 0
+            overflow-x: scroll
+            margin-top: 20px
+        &__asideItem
+            padding: 10px 15px 10px 15px
+        &__info
+            justify-content: center
+            padding-left: 0
+        &__blockAdd
+            padding-left: 0
+
+@media screen and (max-width: 768px)
+    .menu
+        &__list
+            flex-direction: column
+        &__extra
+            padding-bottom: 35px
+        &__item:last-child
+            padding-right: 0
+
+    .section1
+        padding-bottom: 125px
+
+        &__img
+            display: none
+        &__h2
+            padding-top: 30px
+
+@media screen and (max-width: 690px)
+    .section1__h2
+        font-size: 130px
+    
+    .section2
+        &__info
+            flex-direction: column
+            align-items: center
+        &__information
+            width: 100%
+            display: flex
+            align-items: center
+            flex-direction: column
+
+            &_add, &_edit
+                padding-top: 65px
+
+        &__h3_style
+            padding-top: 10px
+            text-align: center
+
+@media screen and (max-width: 600px)
+    .section1__h2
+        font-size: 110px
+
+@media screen and (max-width: 560px)
+    .fixed
+        display: none
+
+    .modalReg__title, .modalEntrance__title
+        font-size: 27px
+
+    .modalProfile
+        &__btn
+            flex-direction: column
+        &__exit
+            margin-top: 5px
+
+    .section2__aside
+        max-width: none
+        width: 100%
+
+    .modalReg
+        &__inputs_style
+            flex-direction: column
+            align-items: center
+        &__photo
+            margin: 0 auto
+        &__setPhoto
+            margin-top: 10px
+
+@media screen and (max-width: 520px)
+    .section1__h2
+        font-size: 100px
+
+    .section2__modalDesc
+        font-size: 18px
+
+@media screen and (max-width: 470px)
+    .section1__h2
+        font-size: 90px
+
+    .footer
+        &__text
+            padding-top: 15px
+            flex-direction: column
+            align-items: center
+        &__p_style
+            text-align: start
+        &__info
+            padding-left: 0
+            padding-top: 20px
+
+@media screen and (max-width: 455px)
+    .section2__aside
+        margin-top: 40px
+
+@media screen and (max-width: 420px)
+    .section1__h2
+        font-size: 80px 
+
+    .section2
+        &__title
+            max-width: none
+            width: 96%
+        &__input
+            width: 100%
+
+@media screen and (max-width: 375px)
+    .section1__h2
+        font-size: 75px
+
+    .section2__modalDesc
+        font-size: 16px
+
+@media screen and (max-width: 365px)
+    .modalSuccessReg__button
+        line-height: 1.5
+
+@media screen and (max-width: 360px)
+    .section1__h2
+        font-size: 70px
+
+    .modalCart
+        &__item
+            flex-direction: column
+        &__remove
+            order: 3
+            padding-right: 0
+            padding-top: 15px
+        &__info
+            text-align: center
+            padding-top: 15px
+        &__span
+            margin: 0 auto
+        &__email
+            width: 100%
+        &__buy
+            font-size: 14px
+
+    .section2
+        &__information
+            align-items: flex-start
+        &__pic
+            max-width: 300px
+            min-width: 300px
+        &__h3_style
+            font-size: 25px
+            width: 100%
+            text-align: center
+        &__extra
+            display: flex
+            flex-direction: column
+            align-items: center
+        &__type
+            padding-bottom: 5px
+        &__modalTitle
+            font-size: 25px
+
+@media screen and (max-width: 320px)
+    .section1__h2
+        font-size: 65px
+
+    .fancybox-slide--html .fancybox-close-small
+        top: 12.5px
+
+    
+
+
+
+
